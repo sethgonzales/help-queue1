@@ -1,25 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ReusableForm from "./ReusableForm";
 import { v4 } from 'uuid'; //give the new form submissions their own unique id
 
 function NewTicketForm(props) { //props gives the form access to the props from TicketControl
   return (
     <React.Fragment>
-      <form onSubmit={handleNewTicketFormSubmission}>
-        <input
-          type='text'
-          name='names'
-          placeholder='Pair Names' />
-        <input
-          type='text'
-          name='location'
-          placeholder='Location' />
-        <textarea
-          name='issue'
-          placeholder='Describe your issue' />
-        <button type='submit'>Help!</button>
-      </form>
+      <ReusableForm 
+        formSubmissionHandler={handleNewTicketFormSubmission} //call on the form submission handler, which brings up the reusable form, passing along the method for making new tickets and the button name
+        buttonText="Help!" />
     </React.Fragment>
+
   )
 
   function handleNewTicketFormSubmission(event) {
